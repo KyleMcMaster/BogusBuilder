@@ -1,22 +1,22 @@
 ﻿using Ardalis.GuardClauses;
 using System.Threading.Tasks;
 
-namespace BogusBuilder.Contributors
+namespace BogusBuilder.Contributors;
+
+/// <summary>
+/// Represents a service that sends a message with an integration DTO.
+/// </summary>
+public class ContributorService
 {
   /// <summary>
-  /// Represents a service that sends a message with an integration DTO.
+  /// Should send a message to a queue or some endpoint, but for now just validates and returns a completed task
   /// </summary>
-  public class ContributorService
+  /// <param name="contributorDTO"></param>
+  /// <returns></returns>
+  public Task SendSomeMessage(ContributorDTO contributorDTO)
   {
-    /// <summary>
-    /// Should send a message to a queue or some endpoint, but for now just validates and returns a completed task
-    /// </summary>
-    /// <param name="contributorDTO"></param>
-    /// <returns></returns>
-    public Task SendSomeMessage(ContributorDTO contributorDTO)
-    {
-      Guard.Against.NegativeOrZero(contributorDTO.Id, nameof(contributorDTO.Id));
-      return Task.CompletedTask;
-    }
+    Guard.Against.NegativeOrZero(contributorDTO.Id, nameof(contributorDTO.Id));
+    return Task.CompletedTask;
   }
 }
+

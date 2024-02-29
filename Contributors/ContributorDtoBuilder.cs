@@ -101,7 +101,8 @@ public class ContributorDtoBuilderV2
   public ContributorDTO Build()
   {
     // If you have a Faker class you can use it here
-    //var contributor = new ContributorDTOFaker(_id, _status)
+    // _id ??= 1; // default to 1 if not provided
+    //var contributor = new ContributorDTOFaker(_status)
     //    .Generate();
 
     // Or you can configure and use a local Faker instance here
@@ -139,7 +140,7 @@ public class ContributorDtoBuilderV2
       _status = status;
 
       CustomInstantiator(f => new ContributorDTO(
-        Id: _id++,
+        Id: _id,
         Email: f.Person.Email,
         FirstName: f.Person.FirstName,
         LastName: f.Person.LastName,
